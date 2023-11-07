@@ -7,34 +7,29 @@
         }
      
         Hand::Hand(const Hand& other){
-            other;
+             cards_= other.cards_;
         }
-        /**
-         * Copy Assignment Operator
-         * @param: other Hand object
-         * @return this Hand 
-         */
-        Hand& Hand::operator=(const Hand& other){
-
-        }
-
-
-        /**
-         * Move Constructor
-         * @param: other Hand object
-         */
-        Hand::Hand(Hand&& other){}
-           
-            
         
-        /**
-         * Move assignment operator
-         * @param: other Hand object
-         * @return this Hand
-         */
-        Hand& Hand::operator=(Hand&& other){
+        Hand& Hand::operator=(const Hand& other){
+             if( this != &other) {
+            cards_.clear();
+            }
+            return *this;
+        }
+
+
+        Hand::Hand(Hand&& other)  {
+            cards_ = std::move(other.cards_);
+        }
            
 
+        Hand& Hand::operator=(Hand&& other){
+            if(this != &other){
+                cards_.clear();
+                cards_ = std::move(other.cards_);
+                
+            }
+        return *this;
         }
 
      
@@ -47,7 +42,7 @@
          * @param PointCard object
          */
         void Hand::addCard(PointCard&& card){
-            card;
+            cards_.push_back(card);
         }
 
        
@@ -58,10 +53,8 @@
             return false;
         }
 
-        /**
-         * @post: Reverse the hand
-         */
         void Hand::Reverse(){
+             std::reverse(cards_.begin(), cards_.end());
             
         }
 
@@ -71,4 +64,6 @@
          * If the card is not playable, the card is removed from the hand
          * @return the points earned from playing the card
          */
-        int PlayCard();
+        int PlayCard(){
+
+        }
