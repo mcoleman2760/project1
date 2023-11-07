@@ -2,33 +2,38 @@
 
 
 
-Card::~Card() {
-    std::cout << "Destructor" << std::endl;
-}
+        Card::~Card() {
+        delete bitmap_;
+        std::cout << "Destructor" << std::endl;
+        }
 
 
-Card::Card(const Card& rhs){
+        Card::Card(const Card& rhs){
+            bitmap_= rhs.bitmap_;
+            cardType_ = rhs.cardType_;
+            instruction_ = rhs.instruction_;
+            drawn_ = rhs.drawn_;
 
-}
+        }
         /**
          * Copy Assignment Operator
          * @param const reference to a Card object
          * @return this Card object
          */
         Card& Card::operator=(const Card& rhs){
+            if( this != &rhs) {
+            *bitmap_= *rhs.bitmap_;
+            cardType_ = rhs.cardType_;
+            instruction_ = rhs.instruction_;
+            drawn_ = rhs.drawn_;
+            }
+            return *this;
 
         }
   
-        Card::Card(Card&& rhs){
-            cardType_ = std::move(rhs.cardType_);
-            instruction_ = std::move(rhs.instruction_);
-            drawn_ = std::move(rhs.drawn_);
-            bitmap_ = std::move(rhs.bitmap_);
-
-            rhs.cardType_= POINT_CARD;
-            rhs.instruction_.clear();
-            rhs.bitmap_= nullptr;
-            rhs.drawn_= false;
+        Card::Card(Card&& rhs) :  Card {rhs }{
+            rhs.instruction_ = nullptr;
+            rhs.bitmap_ = nullptr;
         }
         /**
          * Move assignment operator
@@ -36,14 +41,24 @@ Card::Card(const Card& rhs){
          * @return this card object
         */
         Card& Card::operator=(Card&& rhs){
-            
+            if (this != &rhs){
+                delete[] bitmap_;
+
+            instruction_ = std::move(rhs.instruction_);
+            cardType_ = std::move(rhs.cardType_);
+            bitmap_ = rhs.bitmap_;
+            drawn_ = rhs.drawn_;
+
+            rhs.bitmap_ = nullptr;
+            }
+            return *this;
         }
         /**
          * Default Constructor
          * @post: Construct a new Card object 
          */
         Card::Card(){
-
+            *bitmap_ = 80;
         }
 
 
@@ -51,9 +66,7 @@ std::string Card::getType() const{
     if(cardType_ == POINT_CARD){
         return "POINT_CARD";
     }
-    if(cardType_ == ACTION_CARD){
         return "ACTION_CARD";
-    }
 }
 
  void Card::setType(const CardType& type){
@@ -65,7 +78,7 @@ const std::string& Card::getInstruction() const{
 }
 
 void Card::setInstruction(const std::string& instruction){
-    instruction_ == instruction;
+    instruction_ = instruction;
 }
 
 const int* Card::getImageData() const{
