@@ -7,7 +7,7 @@ PointCard::PointCard(){
 }
 
 bool PointCard::isPlayable() {
-    if (getDrawn() == true || getInstruction().size() > 2){
+    if (getDrawn() == false || getInstruction().size() > 2){
         return false;
     } 
     if(!(std::stoi(getInstruction()) < 1 || std::stoi(getInstruction()) > 99)){
