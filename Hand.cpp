@@ -1,6 +1,7 @@
 #include "Hand.hpp"
 
         Hand::Hand(){
+           // cards_ = {};
         }
         
         Hand::~Hand(){
@@ -12,7 +13,7 @@
         
         Hand& Hand::operator=(const Hand& other){
              if( this != &other) {
-            cards_.clear();
+            cards_= other.cards_;
             }
             return *this;
         }
@@ -24,11 +25,8 @@
            
 
         Hand& Hand::operator=(Hand&& other){
-            if(this != &other){
-                cards_.clear();
-                cards_ = std::move(other.cards_);
-                
-            }
+            cards_ = std::move(other.cards_);
+            
         return *this;
         }
 
@@ -47,7 +45,7 @@
 
        
         bool Hand::isEmpty() const{
-            if (getCards().empty()){
+            if (getCards().empty() ){
                 return true;
             }
             return false;
@@ -64,6 +62,17 @@
          * If the card is not playable, the card is removed from the hand
          * @return the points earned from playing the card
          */
-        int PlayCard(){
-
+        int Hand::PlayCard(){
+                  if (isEmpty()) {
+            throw std::runtime_error("Hand is empty.");
         }
+
+        PointCard card = std::move(cards_.front());
+        cards_.pop_front();
+
+    
+
+    return 4  ;
+}
+
+        
