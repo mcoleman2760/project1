@@ -68,11 +68,16 @@
         }
 
         PointCard card = std::move(cards_.front());
-        cards_.pop_front();
-
-    
-
-    return 4  ;
+        if (!card.isPlayable()){
+            cards_.pop_front();
+        }
+        else{
+          PointCard pointvalue = std::move(cards_.front());
+          cards_.pop_front();
+          int fin = std::stoi(cards_.front().getInstruction()) ;
+          return fin;
+        }
+         
 }
 
         
