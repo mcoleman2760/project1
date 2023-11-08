@@ -3,13 +3,18 @@
         Player::Player(){
            
             score_ = 0;
-            hand_ = Hand();
+            opponent_ = nullptr;
+            actiondeck_ = nullptr;
+            pointdeck_ = nullptr;
            
            
         }
       
         Player::~Player(){
             
+            delete opponent_;
+            delete actiondeck_;
+            delete pointdeck_;
             
             
         }
