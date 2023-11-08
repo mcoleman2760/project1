@@ -76,9 +76,11 @@
         }
         else{
           PointCard pointvalue = std::move(cards_.front());
-          cards_.pop_front();
           int fin = std::stoi(cards_.front().getInstruction()) ;
           return fin;
+          cards_.pop_front();
+          
+          
         }
          
 }
