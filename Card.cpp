@@ -3,8 +3,8 @@
 
 
         Card::~Card() {
-        delete bitmap_;
-        std::cout << "Destructor" << std::endl;
+        delete[] this->bitmap_;
+       
         }
 
 
