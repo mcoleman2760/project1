@@ -74,7 +74,7 @@
         PointCard card = std::move(cards_.front());
         if (!card.isPlayable()){
             cards_.pop_front();
-            throw std::runtime_error("Hand is not playable.");
+           
         }
 
         else{
