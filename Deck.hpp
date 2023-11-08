@@ -72,7 +72,7 @@ class Deck
 
 #include "Deck.cpp"
 #endif
-
+#include "Deck.cpp"
 template <typename CardType>
 Deck<CardType>::Deck(){
     cards_.clear();
