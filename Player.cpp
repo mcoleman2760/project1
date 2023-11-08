@@ -1,9 +1,19 @@
 #include "Player.hpp"
 
         Player::Player(){
+            hand_ =  {} ;
+            score_ = 0;
+            opponent_ = nullptr;
+            actiondeck_ = nullptr;
+            pointdeck_ = nullptr;
         }
       
         Player::~Player(){
+            delete actiondeck_;
+            delete opponent_;
+            delete pointdeck_;
+            score_ = 0;
+            
         }
 
        const Hand& Player::getHand() const{
@@ -28,19 +38,24 @@
          * Begin the function by reporting the instruction of the card:
          * PLAYING ACTION CARD: [instruction]
          */
-        void play(ActionCard&& card){
-            drawPointCard();
-            playPointCard();
+        void Player::play(ActionCard&& card){
+            std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
+            
+           // actiondeck_->AddCard(std::move(card));
         }
 
         /**
          * @post: Draw a point card and place it in the player's hand
          */
-        void drawPointCard();
+        void Player::drawPointCard(){
+            std::cout << "Draw" << std::endl; // FIX THIS
+        }
         /**
          * @post: Play a point card from the player's hand and update the player's score
          */
-        void playPointCard();
+        void Player::playPointCard(){
+            std::cout << "Play" << std::endl; // FIX THIS
+        }
 
 
         void Player::setOpponent(Player* opponent){
