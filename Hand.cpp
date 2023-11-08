@@ -1,10 +1,13 @@
 #include "Hand.hpp"
 
         Hand::Hand(){
-           // cards_ = {};
+           cards_.clear();
         }
         
         Hand::~Hand(){
+           while (this->cards_.size() > 0){
+            this->cards_.pop_back();
+        }
         }
      
         Hand::Hand(const Hand& other){
