@@ -76,7 +76,7 @@
         PointCard card = std::move(cards_.front());
 
 
-         if (!card.isPlayable()){
+         if (!(card.isPlayable())){
             cards_.pop_front();
            return 0;
         }
