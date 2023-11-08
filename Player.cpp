@@ -8,7 +8,7 @@
             pointdeck_ = nullptr;
            
            
-        }
+        };
       
         Player::~Player(){
             
@@ -20,7 +20,7 @@
             pointdeck_ = nullptr;
             
             
-        }
+        };
 
        const Hand& Player::getHand() const{
           return hand_;
