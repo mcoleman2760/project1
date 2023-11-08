@@ -81,7 +81,7 @@
            return 0;
         }
 
-        else{
+        
           
             
              std::string  instruction = card.getInstruction();
@@ -91,9 +91,9 @@
             
           // int fin = std::stoi(card.getInstruction()) ;
           cards_.pop_front();
-         return fin;
-            }
-          
+         
+            
+          return fin;
         }
          
      
