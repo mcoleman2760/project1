@@ -72,6 +72,7 @@
         }
 
         PointCard card = std::move(cards_.front());
+
         if (!card.isPlayable()){
             cards_.pop_front();
            
@@ -79,15 +80,15 @@
 
         else{
           
-        PointCard card = std::move(cards_.front());
+        
           int fin = std::stoi(card.getInstruction()) ;
-          return fin;
           cards_.pop_front();
+          return fin;
           
           
         }
          
-                  }
+     }
          
 
 
