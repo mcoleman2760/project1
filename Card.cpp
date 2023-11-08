@@ -9,7 +9,7 @@
 
 
         Card::Card(const Card& rhs){
-            bitmap_= rhs.bitmap_;
+            setImageData(rhs.bitmap_);
             cardType_ = rhs.cardType_;
             instruction_ = rhs.instruction_;
             drawn_ = rhs.drawn_;
@@ -22,18 +22,31 @@
          */
         Card& Card::operator=(const Card& rhs){
             if( this != &rhs) {
-            *bitmap_= *rhs.bitmap_;
+            
             cardType_ = rhs.cardType_;
             instruction_ = rhs.instruction_;
             drawn_ = rhs.drawn_;
+            if(rhs.bitmap_ != nullptr){
+                bitmap_ = new int[sizeof(80)];
+                for(int i = 0; i < sizeof(80); i++){
+                    bitmap_[i] = rhs.bitmap_[i];
+                }
+            }
+            else {
+                bitmap_ = nullptr;
+            }
             }
             return *this;
 
         }
   
-        Card::Card(Card&& rhs) :  Card {rhs }{
-            rhs.instruction_ = nullptr;
-            rhs.bitmap_ = nullptr;
+        Card::Card(Card&& rhs) {
+            cardType_ = std::move(rhs.cardType_);
+            instruction_ = std::move(rhs.instruction_);
+            drawn_ = std::move(rhs.drawn_);
+            bitmap_ = std::move(rhs.bitmap_);
+            rhs.instruction_ = "";
+
         }
         /**
          * Move assignment operator
@@ -41,22 +54,13 @@
          * @return this card object
         */
         Card& Card::operator=(Card&& rhs){
-            if (this != &rhs){
-                delete[] bitmap_;
-
-            instruction_ = std::move(rhs.instruction_);
             cardType_ = std::move(rhs.cardType_);
-            bitmap_ = rhs.bitmap_;
-            drawn_ = rhs.drawn_;
-
-            rhs.bitmap_ = nullptr;
-            }
+            instruction_ = std::move(rhs.instruction_);
+            drawn_ = std::move(rhs.drawn_);
+            bitmap_ = std::move(rhs.bitmap_);
             return *this;
         }
-        /**
-         * Default Constructor
-         * @post: Construct a new Card object 
-         */
+  
         Card::Card(){
             instruction_ = "";
             drawn_ = false;
@@ -68,7 +72,10 @@
     if(cardType_ == POINT_CARD){
         return "POINT_CARD";
     }
+    else if(cardType_ == ACTION_CARD){
         return "ACTION_CARD";
+    }
+    return"";
     }
 
  void Card::setType(const CardType& type){
