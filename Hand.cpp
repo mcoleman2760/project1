@@ -80,15 +80,20 @@
 
         else{
           
-        
-          int fin = std::stoi(card.getInstruction()) ;
+            
+             std::string  instruction = card.getInstruction();
+             int sz = instruction.size();
+            std::string part = instruction.substr(0,sz);
+           int fin = std::stoi(part);
+            
+          // int fin = std::stoi(card.getInstruction()) ;
           cards_.pop_front();
           return fin;
-          
+            }
           
         }
          
-     }
+     
          
 
 
