@@ -47,6 +47,10 @@
         void Player::play(ActionCard&& card){
             std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
             
+             std::regex drawRegex("DRAW (\\w+)");
+             std::regex playRegex("PLAY (\\w+)");
+             std::smatch match;
+
           if(card.getInstruction() == "REVERSE HAND"){
                 hand_.Reverse();
              }
@@ -60,23 +64,23 @@
                }
 
              }
-        if( card.getInstruction().substr(0,4) == "DRAW"){
+        if( std::regex_search(card.getInstruction(), match, drawRegex)){
             
-            std::string str = card.getInstruction();
+            std::string str = match[1];
 
-             std::string inst = str.substr(str.find(" ") + 1, str.find(" "));
-            int times = std::stoi(inst);
+
+            int times = std::stoi(str);
             
             for(int i = 0; i < times ; i++){
                drawPointCard(); 
             }
             
         }
-        if (card.getInstruction().substr(0,4) == "PLAY"){
-            std::string str = card.getInstruction();
+        if (std::regex_search(card.getInstruction(), match, playRegex)){
+            std::string str = match[1];
 
-             std::string inst = str.substr(str.find(" ") + 1, str.find(" "));
-            int times = std::stoi(inst);
+             
+            int times = std::stoi(str);
             
             for(int i = 0; i < times ; i++){
                playPointCard(); 
@@ -84,8 +88,6 @@
 
         }
             
-
-           
         }
 
         /**
