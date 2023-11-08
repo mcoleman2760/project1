@@ -47,12 +47,12 @@
         void Player::play(ActionCard&& card){
             std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
             
-            if(card.getInstruction() == "REVERSE HAND"){
-                hand_.Reverse();
-            }
-            if(card.getInstruction() == "SWAP HAND WITH OPPONENT"){
+        //    if(card.getInstruction() == "REVERSE HAND"){
+          //      hand_.Reverse();
+           //  }
+          //  if(card.getInstruction() == "SWAP HAND WITH OPPONENT"){
 
-            }
+            // }
             
 
            
@@ -62,16 +62,16 @@
          * @post: Draw a point card and place it in the player's hand
          */
         void Player::drawPointCard(){
-            std::cout << "Draw" << std::endl; // FIX THIS
-            pointdeck_->Draw();
+         //  std::cout << "Draw" << std::endl; // FIX THIS
+          //  pointdeck_->Draw();
 
         }
         /**
          * @post: Play a point card from the player's hand and update the player's score
          */
         void Player::playPointCard(){
-            int x = getScore();
-            x + hand_.PlayCard();
+         //   int x = getScore();
+          //  x + hand_.PlayCard();
         }
 
 
