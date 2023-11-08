@@ -51,7 +51,9 @@
             if (getCards().empty() ){
                 return true;
             }
+            else{
             return false;
+            }
         }
 
         void Hand::Reverse(){
@@ -73,9 +75,10 @@
 
         PointCard card = std::move(cards_.front());
 
-        if (!card.isPlayable()){
+
+         if (!card.isPlayable()){
             cards_.pop_front();
-           
+           return 0;
         }
 
         else{
@@ -87,9 +90,8 @@
            int fin = std::stoi(part);
             
           // int fin = std::stoi(card.getInstruction()) ;
-         return fin;
           cards_.pop_front();
-          
+         return fin;
             }
           
         }
