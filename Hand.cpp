@@ -68,15 +68,15 @@
          * @return the points earned from playing the card
          */
         int Hand::PlayCard(){
-                  if (isEmpty()) {
-                  
+        PointCard card = std::move(cards_.front());
+        if (isEmpty()) {  
             throw std::runtime_error("Hand is empty.");
         }
 
-        PointCard card = std::move(cards_.front());
+        
 
 
-         if (!(card.isPlayable())){
+        if (!(card.isPlayable())){
             cards_.pop_front();
            return 0;
         }
