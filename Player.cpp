@@ -15,6 +15,9 @@
             delete opponent_;
             delete actiondeck_;
             delete pointdeck_;
+            opponent_ = nullptr;
+            actiondeck_ = nullptr;
+            pointdeck_ = nullptr;
             
             
         }
@@ -44,9 +47,14 @@
         void Player::play(ActionCard&& card){
             std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
             
-            drawPointCard();
-            playPointCard();
+            if(card.getInstruction() == "REVERSE HAND"){
+                hand_.Reverse();
+            }
+            if(card.getInstruction() == "SWAP HAND WITH OPPONENT"){
+
+            }
             
+
            
         }
 
@@ -62,7 +70,7 @@
          * @post: Play a point card from the player's hand and update the player's score
          */
         void Player::playPointCard(){
-            std::cout << "Play" << std::endl; // FIX THIS
+            getScore();
             hand_.PlayCard();
         }
 
