@@ -62,7 +62,7 @@
          * @post: Draw a point card and place it in the player's hand
          */
         void Player::drawPointCard(){
-         //  std::cout << "Draw" << std::endl; // FIX THIS
+         // std::cout << "Draw" << std::endl; // FIX THIS
           //  pointdeck_->Draw();
 
         }
