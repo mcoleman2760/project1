@@ -103,6 +103,7 @@ class Player
 
 };
 
+#include "Player.hpp"
 #endif
 
 #include "Player.hpp"
