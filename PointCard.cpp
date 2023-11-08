@@ -1,5 +1,5 @@
 #include "PointCard.hpp"
-
+#include <ctype.h>
 
 
 PointCard::PointCard(){
@@ -10,7 +10,10 @@ bool PointCard::isPlayable() {
     if (getDrawn() == false || getInstruction().size() > 2){
         return false;
     } 
-    if(!(std::stoi(getInstruction()) < 1 || std::stoi(getInstruction()) > 99)){
+    if(isdigit(std::stoi((getInstruction()))) == false){
+        return false;
+    }
+    if(std::stoi(getInstruction()) < 1 || std::stoi(getInstruction()) > 99){
         return false;
     }
     return true;
