@@ -3,16 +3,12 @@
         Player::Player(){
            
             score_ = 0;
+            hand_ = Hand();
            
            
         }
       
         Player::~Player(){
-           
-            if (opponent_ != nullptr) {
-            delete opponent_;
-            }
-            
             
             
             
