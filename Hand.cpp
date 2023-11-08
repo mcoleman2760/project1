@@ -87,8 +87,9 @@
            int fin = std::stoi(part);
             
           // int fin = std::stoi(card.getInstruction()) ;
+         return fin;
           cards_.pop_front();
-          return fin;
+          
             }
           
         }
