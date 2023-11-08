@@ -40,7 +40,9 @@
          */
         void Player::play(ActionCard&& card){
             std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
-            card.Print();
+            
+            drawPointCard();
+            playPointCard();
             
            
         }
