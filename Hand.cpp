@@ -66,17 +66,19 @@
          * @return the points earned from playing the card
          */
         int Hand::PlayCard(){
-
                   if (isEmpty()) {
+                  
             throw std::runtime_error("Hand is empty.");
         }
-            if((cards_.front().isPlayable())  == false ){
-                cards_.pop_front();
-                throw std::runtime_error("Hand is not playable.");
-                
-            }
+
+        PointCard card = std::move(cards_.front());
+        if (!card.isPlayable()){
+            cards_.pop_front();
+            throw std::runtime_error("Hand is not playable.");
+        }
 
         else{
+          
         PointCard card = std::move(cards_.front());
           int fin = std::stoi(card.getInstruction()) ;
           return fin;
@@ -85,6 +87,8 @@
           
         }
          
-}
+                  }
+         
+
 
         
