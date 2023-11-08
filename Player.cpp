@@ -40,8 +40,9 @@
          */
         void Player::play(ActionCard&& card){
             std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
+            card.Print();
             
-           // actiondeck_->AddCard(std::move(card));
+           
         }
 
         /**
@@ -49,12 +50,15 @@
          */
         void Player::drawPointCard(){
             std::cout << "Draw" << std::endl; // FIX THIS
+            pointdeck_->Draw();
+
         }
         /**
          * @post: Play a point card from the player's hand and update the player's score
          */
         void Player::playPointCard(){
             std::cout << "Play" << std::endl; // FIX THIS
+            hand_.PlayCard();
         }
 
 
