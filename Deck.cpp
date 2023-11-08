@@ -1,45 +1,60 @@
-#include "Deck.hpp"
+ /* #include "Deck.hpp"
 
 
 
+
+template <typename CardType>
 Deck<CardType>::Deck(){
-    std::cout << "Constructor" << std::endl;
+    cards_.clear();
 }
 
-       
+
+template <typename CardType>       
 Deck<CardType>::~Deck(){
-    std::cout << "Destructor" << std::endl;
+   while (this->cards_.size() > 0){
+    this->cards_.pop_back();
+   }
 }
 
 
+template <typename CardType>
 void Deck<CardType>::AddCard(const CardType& card){
     cards_.push_back(card);
 }
 
+template <typename CardType>
 CardType&& Deck<CardType>::Draw(){
-    if(IsEmpty()){
-        std::runtime_error("Deck is empty");
-        return;
+    if(IsEmpty() == true){
+      throw std::out_of_range("Deck is empty");
+       
     }
-    CardType&& drawnCard = std::move(cards_.back());
-    cards_.pop_back();
-    return std::move(drawnCard);
+    else {
+        cards_.back().setDrawn(true);
+        CardType&& drawnCard = std::move(cards_.back());
+        cards_.pop_back();
+        return std::move(drawnCard);
+    }
 }
 
+template <typename CardType>
 bool Deck<CardType>::IsEmpty() const{
-    return cards_.empty();
+    return (cards_.size() == 0);
 }
 
+template <typename CardType>
 void Deck<CardType>::Shuffle(){
     std::mt19937 seed(2028358904);
-    std::shuffle(getDeck().begin(), getDeck().end(), seed);
+    std::shuffle(cards_.begin(), cards_.end(), seed);
 }
 
+template <typename CardType>
 int Deck<CardType>::getSize() const{
-      return cards_.size();
+      return this->cards_.size();
 }
 
-
+template <typename CardType>
 std::vector<CardType> Deck<CardType>::getDeck() const{
     return cards_;
 }
+
+*/
