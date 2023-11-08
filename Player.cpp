@@ -12,7 +12,7 @@
             delete actiondeck_;
             delete opponent_;
             delete pointdeck_;
-            score_ = 0;
+            
             
         }
 
