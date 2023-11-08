@@ -3,14 +3,12 @@
         Player::Player(){
            
             score_ = 0;
-            opponent_ = nullptr;
-            actiondeck_ = nullptr;
-            pointdeck_ = nullptr;
+           
+           
         }
       
         Player::~Player(){
-            delete actiondeck_;
-            delete pointdeck_;
+           
             if (opponent_ != nullptr) {
             delete opponent_;
             }
