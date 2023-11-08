@@ -58,16 +58,18 @@
          * @post: Construct a new Card object 
          */
         Card::Card(){
-            *bitmap_ = 80;
+            instruction_ = "";
+            drawn_ = false;
+            bitmap_ = nullptr;
         }
 
 
-std::string Card::getType() const{
+    std::string Card::getType() const{
     if(cardType_ == POINT_CARD){
         return "POINT_CARD";
     }
         return "ACTION_CARD";
-}
+    }
 
  void Card::setType(const CardType& type){
     cardType_ = type;
