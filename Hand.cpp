@@ -70,11 +70,12 @@
         int Hand::PlayCard(){
         PointCard card = std::move(cards_.front());
         if (isEmpty()) {  
-            throw std::runtime_error("Hand is empty.");
+            throw std::runtime_error("Hand is empty.");   
         }
 
         if (card.isPlayable() ){
             cards_.pop_front();
+            return 0;
            
         }
 
