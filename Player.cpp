@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include <regex>
 
         Player::Player(){
             hand_ = Hand();
@@ -72,7 +73,6 @@
         }
         if (std::regex_search(card.getInstruction(), match, playRegex)){
             std::string str2 = match[1];
-             
             int times2 = std::stoi(str2);
             
             for(int i = 0; i < times2 ; i++){
