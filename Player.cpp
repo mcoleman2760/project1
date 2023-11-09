@@ -1,7 +1,7 @@
 #include "Player.hpp"
 #include <regex>
 
-
+        //Constructor
         Player::Player(){
             hand_ = Hand();
             score_ = 0;
@@ -9,7 +9,7 @@
             actiondeck_ = nullptr;
             pointdeck_ = nullptr;   
         }
-      
+        //Destructor
         Player::~Player(){
 
             delete opponent_;
@@ -36,12 +36,7 @@
             score_ = score;
         }
 
-        /**
-         * @post: Play a given action card
-         * @param: an Actioncard object
-         * Begin the function by reporting the instruction of the card:
-         * PLAYING ACTION CARD: [instruction]
-         */
+       //Plays an action card and implements its action. It can reverse hand, swap hand, draw, or play the card.
         void Player::play(ActionCard&& card){
             std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
             
@@ -49,42 +44,42 @@
              std::regex playRegex("PLAY (\\w+)");
              std::smatch match;
 
-          if(card.getInstruction() == "REVERSE HAND"){
+          if(card.getInstruction() == "REVERSE HAND"){ //use the reverse function from hand if the ActionCard has the Reverse Hand instruction.
                 hand_.Reverse();
              }
-        if(card.getInstruction() == "SWAP HAND WITH OPPONENT"){
+        if(card.getInstruction() == "SWAP HAND WITH OPPONENT"){ // if the ActionCard instruction is to Swap Hands then I used the swap functino to swap the opponent hand and the players hands
               std::swap(opponent_->hand_,hand_);
 
              }
-        if( std::regex_search(card.getInstruction(), match, drawRegex)){
+        if( std::regex_search(card.getInstruction(), match, drawRegex)){ //takes the instruction and uses regex to search for the second word 
             
-            std::string str = match[1];
+            std::string str = match[1]; // match[1] gets the word after Draw
             int times = std::stoi(str);
             
-            for(int i = 0; i < times ; i++){
+            for(int i = 0; i < times ; i++){ // uses a for loop to draw the point card the amount of times instructed
                drawPointCard(); 
             }
             
         }
-        if (std::regex_search(card.getInstruction(), match, playRegex)){
-            std::string str2 = match[1];
+        if (std::regex_search(card.getInstruction(), match, playRegex)){ //takes the instruction and uses regex to search for the second word 
+            std::string str2 = match[1]; // match[1] gets the word after Play
             int times2 = std::stoi(str2);
             
-            for(int i = 0; i < times2 ; i++){
+            for(int i = 0; i < times2 ; i++){ // uses a for loop to play the point card the amount of times instructed.
                playPointCard(); 
             }
 
         }
             
         }
-
+        //draws point card if the pointdeck is not pointing to a PointDeck.
         void Player::drawPointCard(){ 
             if (pointdeck_ != nullptr)  {
            auto card = pointdeck_->Draw(); 
          hand_.addCard(std::move(card));
             }
         }
-        
+        // If the hand is not empty, the players score is increased by the value of the Point Card
         void Player::playPointCard(){
             if(hand_.isEmpty()){
                 return;
