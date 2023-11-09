@@ -1,13 +1,13 @@
 #include "Card.hpp"
 
 
-
+        // Destructor
         Card::~Card() {
         delete[] this->bitmap_;
        
         }
 
-
+        // Copy Constructor
         Card::Card(const Card& rhs){
             setImageData(rhs.bitmap_);
             cardType_ = rhs.cardType_;
@@ -15,11 +15,7 @@
             drawn_ = rhs.drawn_;
 
         }
-        /**
-         * Copy Assignment Operator
-         * @param const reference to a Card object
-         * @return this Card object
-         */
+        // Copy Assignment Operator
         Card& Card::operator=(const Card& rhs){
             if( this != &rhs) {
             
@@ -39,7 +35,7 @@
             return *this;
 
         }
-  
+        //Move Constructor
         Card::Card(Card&& rhs) {
             cardType_ = std::move(rhs.cardType_);
             instruction_ = std::move(rhs.instruction_);
@@ -48,11 +44,9 @@
             rhs.instruction_ = "";
 
         }
-        /**
-         * Move assignment operator
-         * @param: rvalue reference to a Card object
-         * @return this card object
-        */
+   
+         // Move assignment operator
+     
         Card& Card::operator=(Card&& rhs){
             cardType_ = std::move(rhs.cardType_);
             instruction_ = std::move(rhs.instruction_);
@@ -60,14 +54,14 @@
             bitmap_ = std::move(rhs.bitmap_);
             return *this;
         }
-  
+        //Constructor
         Card::Card(){
             instruction_ = "";
             drawn_ = false;
             bitmap_ = nullptr;
         }
 
-
+    // Checks if its a PointCard or ActionCard
     std::string Card::getType() const{
     if(cardType_ == POINT_CARD){
         return "POINT_CARD";
@@ -75,7 +69,7 @@
     else if(cardType_ == ACTION_CARD){
         return "ACTION_CARD";
     }
-    return"";
+    return "";
     }
 
  void Card::setType(const CardType& type){
