@@ -67,8 +67,6 @@
         if( std::regex_search(card.getInstruction(), match, drawRegex)){
             
             std::string str = match[1];
-
-
             int times = std::stoi(str);
             
             for(int i = 0; i < times ; i++){
@@ -78,7 +76,6 @@
         }
         if (std::regex_search(card.getInstruction(), match, playRegex)){
             std::string str = match[1];
-
              
             int times = std::stoi(str);
             
