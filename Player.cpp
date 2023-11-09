@@ -5,21 +5,17 @@
             score_ = 0;
             opponent_ = nullptr;
             actiondeck_ = nullptr;
-            pointdeck_ = nullptr;
-           
-           
+            pointdeck_ = nullptr;   
         }
       
         Player::~Player(){
-            
+
             delete opponent_;
             delete actiondeck_;
             delete pointdeck_;
             opponent_ = nullptr;
             actiondeck_ = nullptr;
-            pointdeck_ = nullptr;
-            
-            
+            pointdeck_ = nullptr;    
         }
 
        const Hand& Player::getHand() const{
@@ -79,7 +75,7 @@
              
             int times2 = std::stoi(str2);
             
-            for(int i = 0; i < times2  ; i++){
+            for(int i = 0; i < times2 ; i++){
                playPointCard(); 
             }
 
@@ -87,16 +83,11 @@
             
         }
 
-        /**
-         * @post: Draw a point card and place it in the player's hand
-         */
         void Player::drawPointCard(){   
          hand_.addCard(pointdeck_->Draw());
 
         }
-        /**
-         * @post: Play a point card from the player's hand and update the player's score
-         */
+        
         void Player::playPointCard(){
           int x = getScore();
           score_ = x + hand_.PlayCard();
