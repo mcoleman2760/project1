@@ -93,14 +93,14 @@ void Deck<CardType>::AddCard(const CardType& card){
 template <typename CardType>
 CardType&& Deck<CardType>::Draw(){
     if(IsEmpty() == true){
-      throw std::out_of_range("Deck is empty");
+      throw std::out_of_range("Deck is empty"); //Gives an out of range error if Deck is empty
        
     }
     else {
-        cards_.back().setDrawn(true);
-        CardType&& drawnCard = std::move(cards_.back());
-        cards_.pop_back();
-        return std::move(drawnCard);
+        cards_.back().setDrawn(true); // sets the back card as drawn
+        CardType&& drawnCard = std::move(cards_.back()); 
+        cards_.pop_back(); //removes the card
+        return std::move(drawnCard); //returns the card that was drawn
     }
 }
 
