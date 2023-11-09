@@ -73,7 +73,7 @@
             throw std::exception();
         }
 
-        if (!(card.isPlayable())){
+        if (card.isPlayable() == false){
             cards_.pop_front();
            throw std::exception();
         }
