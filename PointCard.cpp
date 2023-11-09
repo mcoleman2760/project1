@@ -6,7 +6,7 @@ PointCard::PointCard(){
 }
 //Checks if the Card is Playable
 bool PointCard::isPlayable() {
-    if (getDrawn() == false || getInstruction().size() < 2){ // Checks if the PointCard is Drawn 
+    if (getDrawn() == false ){ // Checks if the PointCard is Drawn 
         return false;
     } 
  
