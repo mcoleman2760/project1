@@ -52,13 +52,7 @@
                 hand_.Reverse();
              }
         if(card.getInstruction() == "SWAP HAND WITH OPPONENT"){
-               if( opponent_ != nullptr){
-                Hand temp;
-                temp = opponent_->hand_;
-                opponent_->hand_ = hand_;
-                hand_ = temp;
-                
-               }
+              std::swap(opponent_->hand_,hand_);
 
              }
         if( std::regex_search(card.getInstruction(), match, drawRegex)){
