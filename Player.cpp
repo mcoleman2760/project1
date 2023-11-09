@@ -69,17 +69,17 @@
             std::string str = match[1];
             int times = std::stoi(str);
             
-            for(int i = 0; i < times ; i++){
+            for(int i = 0; i <= times ; i++){
                drawPointCard(); 
             }
             
         }
         if (std::regex_search(card.getInstruction(), match, playRegex)){
-            std::string str = match[1];
+            std::string str2 = match[1];
              
-            int times = std::stoi(str);
+            int times2 = std::stoi(str2);
             
-            for(int i = 0; i < times ; i++){
+            for(int i = 0; i <= times2 ; i++){
                playPointCard(); 
             }
 
