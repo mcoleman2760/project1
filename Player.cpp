@@ -69,7 +69,7 @@
             std::string str = match[1];
             int times = std::stoi(str);
             
-            for(int i = 0; i < times + 1 ; i++){
+            for(int i = 0; i < times ; i++){
                drawPointCard(); 
             }
             
@@ -79,7 +79,7 @@
              
             int times2 = std::stoi(str2);
             
-            for(int i = 0; i < times2 + 1 ; i++){
+            for(int i = 0; i < times2  ; i++){
                playPointCard(); 
             }
 
