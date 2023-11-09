@@ -76,7 +76,7 @@
         
 
 
-        if (cards_.front().isPlayable()){
+        if (!card.isPlayable()){
             cards_.pop_front();
            return 0;
         }
