@@ -1,28 +1,27 @@
 #include "Hand.hpp"
 #include <algorithm>
-
+        // Constructor
         Hand::Hand(){
            cards_.clear();
         }
-        
+        //Destructor
         Hand::~Hand(){
            while (this->cards_.size() > 0){
             this->cards_.pop_back();
         }
         }
-     
+        // Copy Constructor
         Hand::Hand(const Hand& other){
              cards_= other.cards_;
         }
-        
+        //Copy Assignment Constructor
         Hand& Hand::operator=(const Hand& other){
              if( this != &other) {
             cards_= other.cards_;
             }
             return *this;
         }
-
-
+        //Move Constructor
         Hand::Hand(Hand&& other)  {
             cards_ = std::move(other.cards_);
         }
@@ -71,20 +70,15 @@
         int Hand::PlayCard(){
         PointCard card = std::move(cards_.front());
         if (isEmpty()) {  
-            throw std::runtime_error("Hand is empty.");
+            throw std::exception();
         }
-
-        
-
 
         if (card.isPlayable()){
             cards_.pop_front();
-           return 0;
+           throw std::exception();
         }
 
         
-          
-            
               std::string  instruction = card.getInstruction();
               int sz = instruction.size();
              std::string part = instruction.substr(0,sz);
