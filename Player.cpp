@@ -93,9 +93,8 @@
         /**
          * @post: Draw a point card and place it in the player's hand
          */
-        void Player::drawPointCard(){
-         std::cout << "Draw" << std::endl; // FIX THIS
-          pointdeck_->Draw();
+        void Player::drawPointCard(){   
+         hand_.addCard(pointdeck_->Draw());
 
         }
         /**
@@ -103,7 +102,7 @@
          */
         void Player::playPointCard(){
           int x = getScore();
-          x + hand_.PlayCard();
+          score_ = x + hand_.PlayCard();
         }
 
 
