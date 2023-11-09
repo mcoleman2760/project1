@@ -1,6 +1,7 @@
 #include "Player.hpp"
 #include <regex>
 
+
         Player::Player(){
             hand_ = Hand();
             score_ = 0;
@@ -77,14 +78,19 @@
             
         }
 
-        void Player::drawPointCard(){   
-         hand_.addCard(pointdeck_->Draw());
-
+        void Player::drawPointCard(){ 
+            if (pointdeck_ != nullptr)  {
+           auto card = pointdeck_->Draw(); 
+         hand_.addCard(std::move(card));
+            }
         }
         
         void Player::playPointCard(){
+            if(hand_.isEmpty()){
+                return;
+            }
           int x = getScore();
-          score_ = x + hand_.PlayCard();
+          score_ += hand_.PlayCard();
         }
 
 
