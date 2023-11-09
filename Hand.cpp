@@ -43,12 +43,12 @@
          * @param PointCard object
          */
         void Hand::addCard(PointCard&& card){
-            cards_.push_back(card);
+            cards_.push_back(card); 
         }
 
        
         bool Hand::isEmpty() const{
-            if (getCards().empty() ){
+            if (getCards().empty() ){ // checks if the Hand is is empty
                 return true;
             }
             else{
@@ -56,7 +56,7 @@
             }
         }
 
-        void Hand::Reverse(){
+        void Hand::Reverse(){ // reverses the hand
              std::reverse(cards_.begin(), cards_.end());
             
         }
@@ -87,8 +87,6 @@
             
          
           cards_.pop_front();
-         
-            
           return fin;
         }
          
