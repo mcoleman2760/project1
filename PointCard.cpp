@@ -4,19 +4,19 @@
 PointCard::PointCard(){
     setType(POINT_CARD);
 }
-
+//Checks if the Card is Playable
 bool PointCard::isPlayable() {
-    if (getDrawn() == false || getInstruction().size() > 2){
+    if (getDrawn() == false || getInstruction().size() > 2){ // Checks if the PointCard is Drawn 
         return false;
     } 
  
-    if(std::stoi(getInstruction()) < 1 || std::stoi(getInstruction()) > 99){
+    if(std::stoi(getInstruction()) < 1 || std::stoi(getInstruction()) > 99){ // Checks if the PointCard is between values 1 and 99
         return false;
     }
 
     return true;
 } 
-
+// Prints the information on the PointCard
 void PointCard::Print() const {
     std::cout << "Type: " << getType()  << std::endl;   
     std::cout << "Points: " << getInstruction() << std::endl; 
