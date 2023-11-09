@@ -74,20 +74,18 @@
         }
 
         if (card.isPlayable() ){
-            cards_.pop_front();
-            return 0;
-           
-        }
-
-        
-              std::string  instruction = card.getInstruction();
+           std::string  instruction = card.getInstruction();
               int sz = instruction.size();
              std::string part = instruction.substr(0,sz);
            int fin = std::stoi(card.getInstruction());
-            
-         
           cards_.pop_front();
           return fin;
+           
+        }
+            cards_.pop_front();
+            return 0;
+        
+              
         }
          
      
