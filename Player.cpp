@@ -1,7 +1,7 @@
 #include "Player.hpp"
 
         Player::Player(){
-           
+            hand_ = Hand();
             score_ = 0;
             opponent_ = nullptr;
             actiondeck_ = nullptr;
