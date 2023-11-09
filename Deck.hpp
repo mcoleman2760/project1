@@ -70,9 +70,10 @@ class Deck
         std::vector<CardType> cards_;
 };
 
-#include "Deck.cpp"
+//#include "Deck.cpp"
 #endif
-#include "Deck.cpp"
+
+//#include "Deck.cpp"
 template <typename CardType>
 Deck<CardType>::Deck(){
     cards_.clear();
